@@ -5,7 +5,7 @@ NONVOLUNTARYCHECK=0
 VOLUNTARY=1
 VOLUNTARYCHECK=0
 I=1
-BOT=botname  # You can put here other bots. Also you can change it to run more than one bot in the same server.
+BOT=botfam-s  # You can put here other bots. Also you can change it to run more than one bot in the same server.
 RELOADTIME=5  # Time between checking cpu calls of the cli process. Set the value high if your bot does not receive lots of messages.
 
 
@@ -80,7 +80,7 @@ echo -e "$bld$f4 ATTACHING TMUX AS DAEMON...$rst"
 # It is recommended to clear cli status always before starting the bot
 rm ../.telegram-cli/state 2>/dev/null
 # Nested TMUX sessions trick 
-TMUX= tmux new-session -d -s $BOT "./launch.sh"
+TMUX= tmux new-session -d -s $BOT "./botfam.sh"
 sleep 1.3
 
 CLIPID=`ps -e | grep telegram-cli | head -1 | sed 's/^[[:space:]]*//' | cut -f 1 -d" "`
@@ -136,7 +136,7 @@ while true; do
 		kill $CLIPID
 		tmux kill-session -t $BOT
 	
-		TMUX= tmux new-session -d -s $BOT "./launch.sh"
+		TMUX= tmux new-session -d -s $BOT "./botfam.sh"
 		sleep 1
 		
 		CLIPID=`ps -e | grep telegram-cli | head -1 | sed 's/^[[:space:]]*//' | cut -f 1 -d" "`
@@ -190,7 +190,7 @@ cat << EOF
  
 EOF
 echo -e "                \e[100m                Steady script           \e[00;37;40m"
-echo -e "               \e[01;34m                    by shield team     \e[00;37;40m"
+echo -e "               \e[01;34m                    by botfam team     \e[00;37;40m"
 echo ""
 cat << EOF
  $bld$f1▄ ▀▄   ▄▀ ▄   $f2 ▄▄▄████▄▄▄    $f3  ▄██▄     $f4▄ ▀▄   ▄▀ ▄   $f5 ▄▄▄████▄▄▄    $f6  ▄██▄  $rst
@@ -217,9 +217,9 @@ sleep 0.5
 
 echo ""
 echo -e "\033[38;5;208m                                              \033[0;00m"
-echo -e "\033[38;5;208m        shield team                           \033[0;00m"
-echo -e "\033[38;5;208m          @shieldTM                           \033[0;00m"
-echo -e "\033[38;5;208m          developer : @hafez1116hafez         \033[0;00m"
+echo -e "\033[38;5;208m        botfam team                           \033[0;00m"
+echo -e "\033[38;5;208m          @botfam_ch                          \033[0;00m"
+echo -e "\033[38;5;208m          developer : @ubuntu_14              \033[0;00m"
 echo -e "\033[38;5;208m                                              \033[0;00m"
 
 # Starting preliminar setup
@@ -291,7 +291,7 @@ sleep 1
 echo -e "$bld$f4 ATTACHING SCREEN AS DAEMON...$rst"
 # Better to clear cli status before
 rm ../.telegram-cli/state 2>/dev/null
-screen -d -m bash launch.sh
+screen -d -m bash botfam.sh
 
 sleep 1.3
 
@@ -373,7 +373,7 @@ sleep 5
 		kill $CLIPID
 		kill $SCREEN
 		
-		screen -d -m bash launch.sh
+		screen -d -m bash botfam.sh
 		sleep 1
 		
 		CLIPID=`ps -e | grep telegram-cli | sed 's/^[[:space:]]*//' | cut -f 1 -d" "`
@@ -429,7 +429,7 @@ exit 1
 
 function screen_detached {
 clear
-screen -d -m bash launch.sh
+screen -d -m bash botfam.sh
 echo -e "\e[1m"
 echo -e ""
 echo "Bot running in the backgroud with SCREEN"
